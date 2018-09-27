@@ -15,6 +15,26 @@ void read(char *str) {
     if (enter != NULL) *enter = '\0';
 }
 
+void clear(void) {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
+void await(void) {
+    #ifdef _WIN32
+        system("pause");
+    #else
+        system("read");
+    #endif
+}
+
+int isExit(const char *str) {
+    return !strcmp("exit", str);
+}
+
 void menu() {
     printf("+-----------------------------------------------+\n");
     printf("|           MINESWEEPER by Arthuchaut           |\n");

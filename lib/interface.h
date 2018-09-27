@@ -5,4 +5,10 @@ void menu();
 
 void read(char *str);
 
+void clear(void);
+
+void await(void);
+
+int isExtit(const char *str);
+
 #endif

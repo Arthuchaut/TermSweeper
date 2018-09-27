@@ -1,6 +1,10 @@
 #ifndef LIB_GRID_H
 #define LIB_GRID_H
 
+#define MINE "x"
+#define SAFE "#"
+#define EMPTY "."
+
 typedef struct Cell {
     int x;
     int y;
@@ -13,23 +17,30 @@ typedef struct Grid {
     int xVector;
     int yVector;
     int totalMines;
-    Cell **grid;
+    int totalRevealed;
+    int win;
+    int over;
+    Cell **matrix;
 } Grid;
 
-Grid *construct(const int x, const int y);
+Grid *construct(const int xVector, const int yVector);
 
-void _hydrate(Grid *grid, const int x, const int y);
+void _hydrateMatrix(Grid *grid);
+
+void _hydrateCell(Grid *grid, const int x, const int y);
+
+void each(Grid *grid, void (*func)(Grid *, Cell *));
+
+void _countAdjacentMines(Grid *grid, Cell *cell);
 
 void show(const Grid *grid);
 
-int pos(char input);
+void reveal(Grid *grid, Cell *cell);
 
-void revealSafeCells(Grid *grid, int x, int y);
+void _revealSafeCells(Grid *grid, Cell *cell);
 
-void reveal(Grid *grid, int x, int y, int all);
+void _clear(void);
 
-void revealAll(Grid *grid);
-
-int countAdjacentMines(Grid *grid, int x, int y);
+int readCoords(const Grid *grid, const char *str, int *x, int *y);
 
 #endif

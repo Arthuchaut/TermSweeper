@@ -8,16 +8,34 @@
 
 int main(int argc, char *argv[]) {
     char *in;
-    Grid *grid = construct(10, 10);
-    // read(in);
+    int xVector = 15;
+    int yVector = 15;
+    int x = NULL;
+    int y = NULL;
+    Grid *grid = construct(xVector, yVector);
+
     show(grid);
-    // printf("%d %d %d\n", grid->grid[pos(in[0])][pos(in[1])]);
 
-    // printf("%d\n", grid->totalMines);
+    while (!grid->win && !grid->over) {
+        if (readCoords(grid, in, &x, &y)) reveal(grid, &grid->matrix[x][y]);
+        else if (isExit(in)) exit(0);
+        else {
+            printf("Wrong coords.\n");
+            await();
+            show(grid);
+        }
+    }
 
-    reveal(grid, 2, 2, NULL);
+    if (grid->win) {
+        printf("Congratulations ! You found the %d mines ! :)\n\n", grid->totalMines);
+    } else {
+        printf("Uh... It seem's like you walked on a mine ...\n");
+        printf("You had revealed %d%% of the grid.\n\n",
+        (grid->totalRevealed * 100) / (grid->xVector * grid->yVector));
+    }
 
-    system("pause");
+    await();
 
     return 0;
 }
+
