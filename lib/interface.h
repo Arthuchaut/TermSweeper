@@ -3,7 +3,9 @@
 
 void menu();
 
-void read(char *str);
+int read(char *str);
+
+void freeBuffer(void);
 
 void clear(void);
 

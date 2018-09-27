@@ -7,9 +7,9 @@
 #define MAX_READ_LEN 3
 
 int main(int argc, char *argv[]) {
-    char *in;
-    int xVector = 15;
-    int yVector = 15;
+    char in[10];
+    int xVector = 20;
+    int yVector = 20;
     int x = NULL;
     int y = NULL;
     Grid *grid = construct(xVector, yVector);

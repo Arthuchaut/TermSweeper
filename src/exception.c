@@ -4,7 +4,7 @@
 #include "../lib/interface.h"
 
 void raise(char *err) {
-    system("cls");
+    clear();
     printf("[ERROR] %s\n", err);
     await();
     

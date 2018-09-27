@@ -4,15 +4,28 @@
 
 #include "../lib/exception.h"
 
-void read(char *str) {
+int read(char *str) {
     int len = 10;
     char *enter = NULL;
 
-    if (fgets(str, len, stdin) == NULL) return -1;
+    if (fgets(str, len, stdin) != NULL) {
+        enter = strchr(str, '\n');
 
-    enter = strchr(str, '\n');
+        if (enter != NULL) *enter = '\0';
+        else freeBuffer();
 
-    if (enter != NULL) *enter = '\0';
+        return 1;
+    }
+
+    freeBuffer();
+
+    return 0;
+}
+
+void freeBuffer() {
+    char c = NULL;
+
+    while (c != '\n' && c != EOF) c = getchar();
 }
 
 void clear(void) {

@@ -128,7 +128,7 @@ void _revealSafeCells(Grid *grid, Cell *cell) {
 int readCoords(const Grid *grid, const char *str, int *x, int *y) {
     printf("Coords : ");
 
-    read(str);
+    if (!read(str)) raise("Could not read the buffer.");
 
     *x = toupper(str[0]) - 65;
     *y = toupper(str[1]) - 65;
