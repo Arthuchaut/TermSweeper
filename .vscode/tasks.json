@@ -15,7 +15,7 @@
                 "gcc", "-c", "-Wall", "src/interface.c", "-o", "build/interface.o;",
                 "gcc", "-c", "-Wall", "src/main.c", "-o", "build/main.o;",
 
-                "gcc", "-o", "build/main.exe",
+                "gcc", "-o", "build/termsweeper.exe",
                 "build/main.o",
                 "build/grid.o",
                 "build/exception.o",
