@@ -1,7 +1,7 @@
 # TermSweeper
 
 A simple minesweeper written for console.
-**Note :** I have not yet tested on a UNIX system.
+**Note :** I had not yet tested on a UNIX system.
 
 ## Building using GCC
 
